@@ -38,14 +38,18 @@ namespace PrivateChattingBot
             }
         }
 
-        public static long GetQqIdByCardName(string cardName)
+        public static GroupMember GetMemberByName(string name)
         {
-            var queryResult =
-                from member in members
-                where member.cardName == cardName
-                select member.qqId;
+            foreach(var i in members)
+            {
+                if (i.cardName.Contains(name))
+                {
+                    i.name = name;
+                    return i;
+                }
+            }
 
-            return queryResult.Count() > 0 ? queryResult.ElementAt(0) : -1;
+            return null;
         }
     }
 }

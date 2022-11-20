@@ -20,8 +20,10 @@ namespace PrivateChattingBot
     /// </summary>
     public partial class MainWindow : Window
     {
-        KeyboardListener keyboardListener;
-        ChatPerformer chatPerformer;
+        private KeyboardListener keyboardListener;
+        private ChatPerformer chatPerformer;
+        private UiManager uiManager;
+
         
         public MainWindow()
         {
@@ -33,19 +35,46 @@ namespace PrivateChattingBot
             keyboardListener.OnKeyPressed += OnKeyPressed;
             keyboardListener.HookKeyboard();
 
-            chatPerformer = new ChatPerformer();
+            uiManager = new UiManager(this);
+
+            chatPerformer = new ChatPerformer(uiManager);
+
+            uiManager.SetStopState();
+        }
+
+        private List<GroupMember> GetGroupMembers(string rawCardNames)
+        {
+            List<GroupMember> groupMembers = new List<GroupMember>();
+
+            var splited = rawCardNames.Split("\r\n".ToCharArray());
+
+            foreach (var line in splited)
+            {
+                if (line != "")
+                {
+                    var member = DatabaseHelper.GetMemberByName(line);
+                    if (member != null)
+                    {
+                        groupMembers.Add(member);
+                    }
+                }
+            }
+
+            return groupMembers;
         }
 
         private void OnKeyPressed(object sender, KeyPressedArgs e)
         {
             switch (e.KeyPressed)
             {
-                case Key.Escape:
+                case Key.Oem3:
                     chatPerformer.Stop();
                     break;
 
-                case Key.D1:
-                    
+                case Key.CapsLock:
+                    chatPerformer.SetTargetMembers(
+                        GetGroupMembers(tbTargetCardNames.Text));
+                    chatPerformer.DoChats(tbTextToSend.Text);
                     break;
             }
         }

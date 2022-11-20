@@ -22,11 +22,39 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <TextBox x:Name="tbTargetCardNames" Grid.Column="0" Padding="5px"/>
-            <Label x:Name="lblSentCardNames" Grid.Column="1" Padding="5px"/>
+            <DockPanel Grid.Column="0">
+                <Label x:Name="lblTargetCardNames" 
+                       DockPanel.Dock="Top" 
+                       HorizontalAlignment="Center">
+                    Target Card Names
+                </Label>
+                <TextBox x:Name="tbTargetCardNames" 
+                         Padding="5px" 
+                         VerticalScrollBarVisibility="Auto" 
+                         AcceptsReturn="True" 
+                         AcceptsTab="True"/>
+            </DockPanel>
+
+            <DockPanel Grid.Column="1">
+                <Label x:Name="lblFinishedCardNames" 
+                       DockPanel.Dock="Top" 
+                       HorizontalAlignment="Center">
+                    Finished Card Names
+                </Label>
+                <TextBox x:Name="tbFinishedCardNames" 
+                         Padding="5px" 
+                         VerticalScrollBarVisibility="Auto" 
+                         AcceptsReturn="True" 
+                         AcceptsTab="True" IsReadOnly="True"/>
+            </DockPanel>
         </Grid>
         
-        <TextBox x:Name="tbTextToSend" Grid.Row="1" Padding="5px"/>
+        <TextBox x:Name="tbTextToSend" 
+                 Grid.Row="1" 
+                 Padding="5px" 
+                 AcceptsReturn="True" 
+                 AcceptsTab="True" 
+                 VerticalScrollBarVisibility="Auto"/>
         <Label x:Name="lblAppState" Grid.Row="2" Content="Uninitialized"
                VerticalContentAlignment="Center"
                HorizontalContentAlignment="Center"
