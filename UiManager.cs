@@ -48,12 +48,16 @@ namespace PrivateChattingBot
 
         public void SetRunningState(string name)
         {
+            context.lblAppState.Background = new SolidColorBrush(
+                Color.FromRgb(0xD3, 0xFF, 0xD2));
             context.lblAppState.Foreground = new SolidColorBrush(Colors.Green);
             context.lblAppState.Content = $"RUNNING - {name}";
         }
 
         public void SetStopState()
         {
+            context.lblAppState.Background = new SolidColorBrush(
+                Color.FromRgb(0xD2, 0xE2, 0xFF));
             context.lblAppState.Foreground = new SolidColorBrush(Colors.Blue);
             context.lblAppState.Content = "STOPPED";
         }

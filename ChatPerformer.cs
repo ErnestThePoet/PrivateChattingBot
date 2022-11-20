@@ -29,6 +29,7 @@ namespace PrivateChattingBot
         {
             this.targetMembers = targetMembers;
             uiManager.SetTargetCardNamesTitle(targetMembers.Count);
+            uiManager.SetTargetCardNames(targetMembers);
         }
 
         private void RunOnUiThread(Action action)
@@ -41,7 +42,7 @@ namespace PrivateChattingBot
 
         public void DoChats(string text)
         {
-            if (isStarted)
+            if (isStarted||targetMembers.Count==0)
             {
                 return;
             }

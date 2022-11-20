@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrivateChattingBot"
         mc:Ignorable="d"
-        Title="Private Chatting Bot" 
+        Title="Ernest's Private Chatting Bot" 
         Height="700" 
         Width="500" 
         Closed="Window_Closed" ResizeMode="CanMinimize">
@@ -52,12 +52,13 @@
         <TextBox x:Name="tbTextToSend" 
                  Grid.Row="1" 
                  Padding="5px" 
+                 FontSize="15px"
                  AcceptsReturn="True" 
                  AcceptsTab="True" 
                  VerticalScrollBarVisibility="Auto"/>
         <Label x:Name="lblAppState" Grid.Row="2" Content="Uninitialized"
                VerticalContentAlignment="Center"
                HorizontalContentAlignment="Center"
-               FontSize="30px"/>
+               FontSize="40px"/>
     </Grid>
 </Window>
