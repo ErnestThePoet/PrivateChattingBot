@@ -66,34 +66,32 @@ namespace PrivateChattingBot
                     // Click search bar
                     MouseSender.LeftClick(1717, 418);
                     Clipboard.SetText(currentMember.qqId.ToString());
-
                     Thread.Sleep(SHORT_INTERVAL_MS);
 
                     // Press Ctrl+V to search for the student
                     KeyboardSender.SendCtrlV();
-
                     Thread.Sleep(NORMAL_INTERVAL_MS);
 
                     // Press enter to open chat window
                     KeyboardSender.SendEnter();
                     Clipboard.SetText(text);
-
                     Thread.Sleep(NORMAL_INTERVAL_MS);
 
                     // Focus message box
                     MouseSender.LeftClick(775, 821);
-
                     Thread.Sleep(SHORT_INTERVAL_MS);
 
                     // Press Ctrl+A to select all previous message text
                     KeyboardSender.SendCtrlA();
-
                     Thread.Sleep(SHORT_INTERVAL_MS);
 
                     // Press Ctrl+V to paste message text
                     KeyboardSender.SendCtrlV();
-
                     Thread.Sleep(SHORT_INTERVAL_MS);
+
+                    // Press Ctrl+Enter to send message
+                    //KeyboardSender.SendCtrlEnter();
+                    //Thread.Sleep(SHORT_INTERVAL_MS);
 
                     // Close chat window
                     KeyboardSender.SendAltF4();
