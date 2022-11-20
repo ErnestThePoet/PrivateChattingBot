@@ -5,8 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrivateChattingBot"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Private Chatting Bot" 
+        Height="700" 
+        Width="500" 
+        Closed="Window_Closed" ResizeMode="CanMinimize">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox x:Name="tbTargetCardNames" Grid.Column="0" Padding="5px"/>
+            <Label x:Name="lblSentCardNames" Grid.Column="1" Padding="5px"/>
+        </Grid>
         
+        <TextBox x:Name="tbTextToSend" Grid.Row="1" Padding="5px"/>
+        <Label x:Name="lblAppState" Grid.Row="2" Content="Uninitialized"
+               VerticalContentAlignment="Center"
+               HorizontalContentAlignment="Center"
+               FontSize="30px"/>
     </Grid>
 </Window>

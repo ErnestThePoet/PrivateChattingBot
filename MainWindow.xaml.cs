@@ -20,9 +20,39 @@ namespace PrivateChattingBot
     /// </summary>
     public partial class MainWindow : Window
     {
+        KeyboardListener keyboardListener;
+        ChatPerformer chatPerformer;
+        
         public MainWindow()
         {
             InitializeComponent();
+
+            DatabaseHelper.ReadDatabase();
+
+            keyboardListener = new KeyboardListener();
+            keyboardListener.OnKeyPressed += OnKeyPressed;
+            keyboardListener.HookKeyboard();
+
+            chatPerformer = new ChatPerformer();
+        }
+
+        private void OnKeyPressed(object sender, KeyPressedArgs e)
+        {
+            switch (e.KeyPressed)
+            {
+                case Key.Escape:
+                    chatPerformer.Stop();
+                    break;
+
+                case Key.D1:
+                    
+                    break;
+            }
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            keyboardListener.UnHookKeyboard();
         }
     }
 }
