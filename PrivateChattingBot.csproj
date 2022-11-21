@@ -61,19 +61,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ChatTarget.cs" />
+    <Compile Include="ConfigManager.cs" />
+    <Compile Include="objects\BotConfig.cs" />
+    <Compile Include="objects\ChatTarget.cs" />
     <Compile Include="UiManager.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="ChatPerformer.cs" />
-    <Compile Include="DatabaseHelper.cs" />
+    <Compile Include="DatabaseManager.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GroupMember.cs" />
+    <Compile Include="objects\GroupMember.cs" />
     <Compile Include="KeyboardListener.cs" />
     <Compile Include="KeyboardSender.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -100,6 +102,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="data\config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="data\members.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

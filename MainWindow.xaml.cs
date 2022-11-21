@@ -29,7 +29,8 @@ namespace PrivateChattingBot
         {
             InitializeComponent();
 
-            DatabaseHelper.ReadDatabase();
+            ConfigManager.Load();
+            DatabaseManager.Load();
 
             keyboardListener = new KeyboardListener();
             keyboardListener.OnKeyPressed += OnKeyPressed;
@@ -54,7 +55,7 @@ namespace PrivateChattingBot
 
                 if (purifiedLine != "")
                 {
-                    var chatTarget = DatabaseHelper.GetChatTargetByName(purifiedLine);
+                    var chatTarget = DatabaseManager.GetChatTargetByName(purifiedLine);
                     if (chatTarget != null)
                     {
                         chatTargets.Add(chatTarget);

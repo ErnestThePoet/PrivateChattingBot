@@ -34,7 +34,7 @@
                 </Label>
                 <TextBox x:Name="tbChatTargetList" 
                          Padding="5px" 
-                         FontSize="13px"
+                         FontSize="14px"
                          VerticalScrollBarVisibility="Auto" 
                          AcceptsReturn="True" 
                          AcceptsTab="True" 
@@ -49,7 +49,7 @@
                 </Label>
                 <TextBox x:Name="tbFinishedTargetList" 
                          Padding="5px" 
-                         FontSize="13px"
+                         FontSize="14px"
                          VerticalScrollBarVisibility="Auto" 
                          AcceptsReturn="True" 
                          AcceptsTab="True" 
@@ -61,7 +61,7 @@
         <TextBox x:Name="tbTextToSend" 
                  Grid.Row="1" 
                  Padding="5px" 
-                 FontSize="16px"
+                 FontSize="18px"
                  AcceptsReturn="True" 
                  AcceptsTab="True" 
                  VerticalScrollBarVisibility="Auto" Background="{x:Null}"/>

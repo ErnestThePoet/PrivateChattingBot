@@ -51,10 +51,7 @@ namespace PrivateChattingBot
 
             Thread chatThread=new Thread(() =>
             {
-                const int NORMAL_INTERVAL_MS = 500;
-                const int SHORT_INTERVAL_MS = 100;
-
-                for(int i=0;this.isStarted&&i< chatTargets.Count;)
+                for(int i=0;isStarted&&i< chatTargets.Count;)
                 {
                     var currentChatTarget= chatTargets[i];
 
@@ -64,34 +61,36 @@ namespace PrivateChattingBot
                     });
 
                     // Click search bar
-                    MouseSender.LeftClick(1717, 418);
+                    MouseSender.LeftClick(
+                        ConfigManager.SearchBarX, ConfigManager.SearchBarY);
                     Clipboard.SetText(currentChatTarget.groupMember.qqId.ToString());
-                    Thread.Sleep(SHORT_INTERVAL_MS);
+                    Thread.Sleep(ConfigManager.ShortIntervalMs);
 
                     // Press Ctrl+V to search for the student
                     KeyboardSender.SendCtrlV();
-                    Thread.Sleep(NORMAL_INTERVAL_MS);
+                    Thread.Sleep(ConfigManager.LongIntervalMs);
 
                     // Press enter to open chat window
                     KeyboardSender.SendEnter();
                     Clipboard.SetText(text);
-                    Thread.Sleep(NORMAL_INTERVAL_MS);
+                    Thread.Sleep(ConfigManager.LongIntervalMs);
 
                     // Focus message box
-                    MouseSender.LeftClick(775, 821);
-                    Thread.Sleep(SHORT_INTERVAL_MS);
+                    MouseSender.LeftClick(
+                        ConfigManager.MessageBoxX, ConfigManager.MessageBoxY);
+                    Thread.Sleep(ConfigManager.ShortIntervalMs);
 
                     // Press Ctrl+A to select all previous message text
                     KeyboardSender.SendCtrlA();
-                    Thread.Sleep(SHORT_INTERVAL_MS);
+                    Thread.Sleep(ConfigManager.ShortIntervalMs);
 
                     // Press Ctrl+V to paste message text
                     KeyboardSender.SendCtrlV();
-                    Thread.Sleep(SHORT_INTERVAL_MS);
+                    Thread.Sleep(ConfigManager.ShortIntervalMs);
 
                     // Press Ctrl+Enter to send message
                     //KeyboardSender.SendCtrlEnter();
-                    //Thread.Sleep(SHORT_INTERVAL_MS);
+                    //Thread.Sleep(ConfigManager.ShortIntervalMs);
 
                     // Close chat window
                     KeyboardSender.SendAltF4();

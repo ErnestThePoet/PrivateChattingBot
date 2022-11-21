@@ -9,31 +9,35 @@ using System.Windows;
 
 namespace PrivateChattingBot
 {
-    internal class DatabaseHelper
+    internal class DatabaseManager
     {
         private static List<GroupMember> members;
-        public static void ReadDatabase()
+
+        private const string JSON_FILE_PATH = "data/members.json";
+
+        public static void Load()
         {
-            string membersRawJson="";
+            string rawJson="";
             try
             {
-                membersRawJson = File.ReadAllText(
-                    AppDomain.CurrentDomain.BaseDirectory + "data/members.json");
+                rawJson = File.ReadAllText(
+                    AppDomain.CurrentDomain.BaseDirectory + JSON_FILE_PATH);
             }
             catch
             {
-                MessageBox.Show("Failed to load members.json");
+                MessageBox.Show($"Failed to load {JSON_FILE_PATH}");
                 Application.Current.Shutdown();
             }
 
             try
             {
                 members= JsonConvert.DeserializeObject
-                    <List<GroupMember>>(membersRawJson);
+                    <List<GroupMember>>(rawJson);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("members.json deserialization error: " + ex.Message);
+                MessageBox.Show(
+                    $"{JSON_FILE_PATH} deserialization error: " + ex.Message);
                 Application.Current.Shutdown();
             }
         }
