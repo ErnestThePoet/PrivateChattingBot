@@ -50,9 +50,11 @@ namespace PrivateChattingBot
 
             foreach (var line in splited)
             {
-                if (line != "")
+                string purifiedLine = line.Replace(" ", "").Replace("\t", "");
+
+                if (purifiedLine != "")
                 {
-                    var chatTarget = DatabaseHelper.GetChatTargetByName(line);
+                    var chatTarget = DatabaseHelper.GetChatTargetByName(purifiedLine);
                     if (chatTarget != null)
                     {
                         chatTargets.Add(chatTarget);
