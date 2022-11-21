@@ -38,14 +38,13 @@ namespace PrivateChattingBot
             }
         }
 
-        public static GroupMember GetMemberByName(string name)
+        public static ChatTarget GetChatTargetByName(string name)
         {
             foreach(var i in members)
             {
                 if (i.cardName.Contains(name))
                 {
-                    i.name = name;
-                    return i;
+                    return new ChatTarget { groupMember = i,name=name };
                 }
             }
 

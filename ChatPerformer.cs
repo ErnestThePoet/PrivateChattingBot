@@ -15,21 +15,14 @@ namespace PrivateChattingBot
 
         private UiManager uiManager;
 
-        private List<GroupMember> targetMembers;
-        private List<GroupMember> finishedMembers;
+        private List<ChatTarget> chatTargets;
+        private List<ChatTarget> finishedChatTargets;
 
         public ChatPerformer(UiManager uiManager)
         {
-            targetMembers = new List<GroupMember>();
-            finishedMembers = new List<GroupMember>();
+            chatTargets = new List<ChatTarget>();
+            finishedChatTargets = new List<ChatTarget>();
             this.uiManager = uiManager;
-        }
-
-        public void SetTargetMembers(List<GroupMember> targetMembers)
-        {
-            this.targetMembers = targetMembers;
-            uiManager.SetTargetCardNamesTitle(targetMembers.Count);
-            uiManager.SetTargetCardNames(targetMembers);
         }
 
         private void RunOnUiThread(Action action)
@@ -40,9 +33,16 @@ namespace PrivateChattingBot
             });
         }
 
+        public void SetChatTargets(List<ChatTarget> chatTargets)
+        {
+            this.chatTargets = chatTargets;
+            uiManager.UpdateTwoListsAndTitles(
+                chatTargets, finishedChatTargets);
+        }
+
         public void DoChats(string text)
         {
-            if (isStarted||targetMembers.Count==0)
+            if (isStarted|| chatTargets.Count==0)
             {
                 return;
             }
@@ -52,20 +52,20 @@ namespace PrivateChattingBot
             Thread chatThread=new Thread(() =>
             {
                 const int NORMAL_INTERVAL_MS = 500;
-                const int SHORT_INTERVAL_MS = 200;
+                const int SHORT_INTERVAL_MS = 100;
 
-                for(int i=0;this.isStarted&&i<targetMembers.Count;)
+                for(int i=0;this.isStarted&&i< chatTargets.Count;)
                 {
-                    var currentMember=targetMembers[i];
+                    var currentChatTarget= chatTargets[i];
 
                     RunOnUiThread(() =>
                     {
-                        uiManager.SetRunningState(currentMember.name);
+                        uiManager.SetRunningState(currentChatTarget.name);
                     });
 
                     // Click search bar
                     MouseSender.LeftClick(1717, 418);
-                    Clipboard.SetText(currentMember.qqId.ToString());
+                    Clipboard.SetText(currentChatTarget.groupMember.qqId.ToString());
                     Thread.Sleep(SHORT_INTERVAL_MS);
 
                     // Press Ctrl+V to search for the student
@@ -96,19 +96,18 @@ namespace PrivateChattingBot
                     // Close chat window
                     KeyboardSender.SendAltF4();
 
-                    finishedMembers.Add(currentMember);
-                    targetMembers.RemoveAt(i);
+                    currentChatTarget.chatTime = DateTime.Now;
+                    finishedChatTargets.Add(currentChatTarget);
+                    chatTargets.RemoveAt(i);
 
                     RunOnUiThread(() =>
                     {
-                        uiManager.SetTargetCardNamesTitle(targetMembers.Count);
-                        uiManager.SetFiniehedCardNamesTitle(finishedMembers.Count);
-                        uiManager.SetTargetCardNames(targetMembers);
-                        uiManager.SetFinishedCardNames(finishedMembers);
+                        uiManager.UpdateTwoListsAndTitles(
+                            chatTargets, finishedChatTargets);
                     });
                 }
 
-                if (targetMembers.Count == 0)
+                if (chatTargets.Count == 0)
                 {
                     RunOnUiThread(Stop);
                 }

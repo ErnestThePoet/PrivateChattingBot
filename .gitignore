@@ -12,6 +12,7 @@
 
 /data
 /rawdata
+/uires_raw
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

@@ -14,42 +14,57 @@ namespace PrivateChattingBot
         {
             this.context = context;
         }
-        public void SetTargetCardNamesTitle(int count)
+        private void SetChatTargetListTitle(int count)
         {
-            context.lblTargetCardNames.Content =
-                $"Target Card Names ({count})";
+            context.lblChatTargetList.Content =
+                $"Chat Target List ({count})";
         }
 
-        public void SetFiniehedCardNamesTitle(int count)
+        private void SetFinishedChatTargetListTitle(int count)
         {
-            context.lblFinishedCardNames.Content =
-                $"Finished Card Names ({count})";
+            context.lblFinishedTargetList.Content =
+                $"Finished Chat Target List ({count})";
         }
 
-        private string GetNames(List<GroupMember> groupMembers)
+        private string GetLines(
+            List<ChatTarget> chatTargets,Func<ChatTarget,string> extractor)
         {
-            string cardNames = "";
-            foreach (GroupMember groupMember in groupMembers)
+            string names = "";
+            foreach (var chatTarget in chatTargets)
             {
-                cardNames += groupMember.name + "\r\n";
+                names += extractor(chatTarget) + "\r\n";
             }
-            return cardNames;
+            return names;
         }
 
-        public void SetTargetCardNames(List<GroupMember> groupMembers)
+        private void SetChatTargetList(List<ChatTarget> chatTargets)
         {
-            context.tbTargetCardNames.Text = GetNames(groupMembers);
+            context.tbChatTargetList.Text = GetLines(
+                chatTargets, 
+                x => x.name);
         }
 
-        public void SetFinishedCardNames(List<GroupMember> groupMembers)
+        private void SetFinishedChatTargetList(List<ChatTarget> finishedChatTargets)
         {
-            context.tbFinishedCardNames.Text = GetNames(groupMembers);
+            context.tbFinishedTargetList.Text = GetLines(
+                finishedChatTargets,
+                x=>$"{x.name} - {x.chatTime.ToString("yyyy-MM-dd HH:mm:ss")}");
+        }
+
+        public void UpdateTwoListsAndTitles(
+            List<ChatTarget> chatTargets, 
+            List<ChatTarget> finishedChatTargets)
+        {
+            SetChatTargetListTitle(chatTargets.Count);
+            SetFinishedChatTargetListTitle(finishedChatTargets.Count);
+            SetChatTargetList(chatTargets);
+            SetFinishedChatTargetList(finishedChatTargets);
         }
 
         public void SetRunningState(string name)
         {
             context.lblAppState.Background = new SolidColorBrush(
-                Color.FromRgb(0xD3, 0xFF, 0xD2));
+                Color.FromArgb(128,0xD3, 0xFF, 0xD2));
             context.lblAppState.Foreground = new SolidColorBrush(Colors.Green);
             context.lblAppState.Content = $"RUNNING - {name}";
         }
@@ -57,7 +72,7 @@ namespace PrivateChattingBot
         public void SetStopState()
         {
             context.lblAppState.Background = new SolidColorBrush(
-                Color.FromRgb(0xD2, 0xE2, 0xFF));
+                Color.FromArgb(128,0xD2, 0xE2, 0xFF));
             context.lblAppState.Foreground = new SolidColorBrush(Colors.Blue);
             context.lblAppState.Content = "STOPPED";
         }

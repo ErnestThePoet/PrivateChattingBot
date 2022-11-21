@@ -9,6 +9,10 @@
         Height="700" 
         Width="500" 
         Closed="Window_Closed" ResizeMode="CanMinimize">
+    <Window.Background>
+        <ImageBrush ImageSource="./uires/bkg.png"/>
+    </Window.Background>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="5*"/>
@@ -23,39 +27,44 @@
             </Grid.ColumnDefinitions>
 
             <DockPanel Grid.Column="0">
-                <Label x:Name="lblTargetCardNames" 
+                <Label x:Name="lblChatTargetList" 
                        DockPanel.Dock="Top" 
                        HorizontalAlignment="Center">
-                    Target Card Names
+                    Chat Target List
                 </Label>
-                <TextBox x:Name="tbTargetCardNames" 
+                <TextBox x:Name="tbChatTargetList" 
                          Padding="5px" 
+                         FontSize="13px"
                          VerticalScrollBarVisibility="Auto" 
                          AcceptsReturn="True" 
-                         AcceptsTab="True"/>
+                         AcceptsTab="True" 
+                         Background="{x:Null}"/>
             </DockPanel>
 
             <DockPanel Grid.Column="1">
-                <Label x:Name="lblFinishedCardNames" 
+                <Label x:Name="lblFinishedTargetList" 
                        DockPanel.Dock="Top" 
                        HorizontalAlignment="Center">
-                    Finished Card Names
+                    Finished Chat Target List
                 </Label>
-                <TextBox x:Name="tbFinishedCardNames" 
+                <TextBox x:Name="tbFinishedTargetList" 
                          Padding="5px" 
+                         FontSize="13px"
                          VerticalScrollBarVisibility="Auto" 
                          AcceptsReturn="True" 
-                         AcceptsTab="True" IsReadOnly="True"/>
+                         AcceptsTab="True" 
+                         IsReadOnly="True" 
+                         Background="{x:Null}"/>
             </DockPanel>
         </Grid>
         
         <TextBox x:Name="tbTextToSend" 
                  Grid.Row="1" 
                  Padding="5px" 
-                 FontSize="15px"
+                 FontSize="16px"
                  AcceptsReturn="True" 
                  AcceptsTab="True" 
-                 VerticalScrollBarVisibility="Auto"/>
+                 VerticalScrollBarVisibility="Auto" Background="{x:Null}"/>
         <Label x:Name="lblAppState" Grid.Row="2" Content="Uninitialized"
                VerticalContentAlignment="Center"
                HorizontalContentAlignment="Center"

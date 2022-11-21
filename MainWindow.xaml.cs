@@ -42,9 +42,9 @@ namespace PrivateChattingBot
             uiManager.SetStopState();
         }
 
-        private List<GroupMember> GetGroupMembers(string rawCardNames)
+        private List<ChatTarget> GetChatTargets(string rawCardNames)
         {
-            List<GroupMember> groupMembers = new List<GroupMember>();
+            List<ChatTarget> chatTargets = new List<ChatTarget>();
 
             var splited = rawCardNames.Split("\r\n".ToCharArray());
 
@@ -52,15 +52,15 @@ namespace PrivateChattingBot
             {
                 if (line != "")
                 {
-                    var member = DatabaseHelper.GetMemberByName(line);
-                    if (member != null)
+                    var chatTarget = DatabaseHelper.GetChatTargetByName(line);
+                    if (chatTarget != null)
                     {
-                        groupMembers.Add(member);
+                        chatTargets.Add(chatTarget);
                     }
                 }
             }
 
-            return groupMembers;
+            return chatTargets;
         }
 
         private void OnKeyPressed(object sender, KeyPressedArgs e)
@@ -72,8 +72,8 @@ namespace PrivateChattingBot
                     break;
 
                 case Key.CapsLock:
-                    chatPerformer.SetTargetMembers(
-                        GetGroupMembers(tbTargetCardNames.Text));
+                    chatPerformer.SetChatTargets(
+                        GetChatTargets(tbChatTargetList.Text));
                     chatPerformer.DoChats(tbTextToSend.Text);
                     break;
             }
