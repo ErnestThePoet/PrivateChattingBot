@@ -10,7 +10,8 @@
 *.userosscache
 *.sln.docstates
 
-/data
+/data/*.json
+!/data/config.json
 /rawdata
 /uires_raw
 

@@ -1,0 +1,10 @@
+{
+    "shortIntervalMs":100,
+    "longIntervalMs":500,
+
+    "searchBarX":1717,
+    "searchBarY":418,
+    
+    "messageBoxX":775,
+    "messageBoxY":821
+}
