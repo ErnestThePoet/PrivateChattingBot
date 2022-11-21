@@ -76,15 +76,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="objects\GroupMember.cs" />
-    <Compile Include="KeyboardListener.cs" />
-    <Compile Include="KeyboardSender.cs" />
+    <Compile Include="interop\KeyboardListener.cs" />
+    <Compile Include="interop\KeyboardSender.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MouseSender.cs" />
+    <Compile Include="interop\MouseSender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -89,8 +89,8 @@ namespace PrivateChattingBot
                     Thread.Sleep(ConfigManager.ShortIntervalMs);
 
                     // Press Ctrl+Enter to send message
-                    //KeyboardSender.SendCtrlEnter();
-                    //Thread.Sleep(ConfigManager.ShortIntervalMs);
+                    KeyboardSender.SendCtrlEnter();
+                    Thread.Sleep(ConfigManager.ShortIntervalMs);
 
                     // Close chat window
                     KeyboardSender.SendAltF4();
