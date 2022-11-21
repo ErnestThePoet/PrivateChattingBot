@@ -70,14 +70,18 @@ namespace PrivateChattingBot
         {
             switch (e.KeyPressed)
             {
-                case Key.Oem3:
-                    chatPerformer.Stop();
-                    break;
-
                 case Key.CapsLock:
-                    chatPerformer.SetChatTargets(
+                    if (chatPerformer.GetIsStarted())
+                    {
+                        chatPerformer.Stop();
+                    }
+                    else
+                    {
+                        chatPerformer.SetChatTargets(
                         GetChatTargets(tbChatTargetList.Text));
-                    chatPerformer.DoChats(tbTextToSend.Text);
+                        chatPerformer.DoChats(tbTextToSend.Text);
+                    }
+                    
                     break;
             }
         }

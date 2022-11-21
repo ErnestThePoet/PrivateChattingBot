@@ -33,6 +33,11 @@ namespace PrivateChattingBot
             });
         }
 
+        public bool GetIsStarted()
+        {
+            return isStarted;
+        }
+
         public void SetChatTargets(List<ChatTarget> chatTargets)
         {
             this.chatTargets = chatTargets;
