@@ -52,19 +52,19 @@
     </sys:String>
 
     <sys:String x:Key="ShortIntervalMsLabel">
-        短操作间隔(ms)
+        短操作间隔(ms):
     </sys:String>
 
     <sys:String x:Key="LongIntervalMsLabel">
-        长操作间隔(ms)
+        长操作间隔(ms):
     </sys:String>
 
     <sys:String x:Key="SearchBarCoordLabel">
-        QQ群成员搜索框坐标(X,Y)
+        QQ群成员搜索框坐标(X,Y):
     </sys:String>
 
     <sys:String x:Key="MessageBoxCoordLabel">
-        QQ聊天消息输入框坐标(X,Y)
+        QQ聊天消息输入框坐标(X,Y):
     </sys:String>
 
     <sys:String x:Key="ButtonOkText">

@@ -52,19 +52,19 @@
     </sys:String>
 
     <sys:String x:Key="ShortIntervalMsLabel">
-        Short operation interval(ms)
+        Short operation interval(ms):
     </sys:String>
 
     <sys:String x:Key="LongIntervalMsLabel">
-        Long operation interval(ms)
+        Long operation interval(ms):
     </sys:String>
 
     <sys:String x:Key="SearchBarCoordLabel">
-        Search bar coordination(X,Y)
+        Search bar coordination(X,Y):
     </sys:String>
 
     <sys:String x:Key="MessageBoxCoordLabel">
-        Message box coordination(X,Y)
+        Message box coordination(X,Y):
     </sys:String>
 
     <sys:String x:Key="ButtonOkText">
