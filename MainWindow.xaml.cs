@@ -79,7 +79,7 @@ namespace PrivateChattingBot
                     {
                         chatPerformer.SetChatTargets(
                         GetChatTargets(tbChatTargetList.Text));
-                        chatPerformer.DoChats(tbTextToSend.Text);
+                        chatPerformer.DoChats(tbMessageToSend.Text);
                     }
                     
                     break;

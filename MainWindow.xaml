@@ -57,14 +57,22 @@
                          Background="{x:Null}"/>
             </DockPanel>
         </Grid>
-        
-        <TextBox x:Name="tbTextToSend" 
-                 Grid.Row="1" 
+
+        <DockPanel Grid.Row="1">
+            <Label x:Name="lblMessageToSend" 
+                       DockPanel.Dock="Top" 
+                       HorizontalAlignment="Center">
+                Message To Send
+            </Label>
+
+            <TextBox x:Name="tbMessageToSend" 
                  Padding="5px" 
                  FontSize="18px"
                  AcceptsReturn="True" 
                  AcceptsTab="True" 
                  VerticalScrollBarVisibility="Auto" Background="{x:Null}"/>
+        </DockPanel>
+
         <Label x:Name="lblAppState" Grid.Row="2" Content="Uninitialized"
                VerticalContentAlignment="Center"
                HorizontalContentAlignment="Center"

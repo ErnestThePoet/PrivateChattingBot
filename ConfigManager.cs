@@ -43,6 +43,7 @@ namespace PrivateChattingBot
             }
         }
 
+        public static bool PasteOnly { get { return config.pasteOnly; } }
         public static int ShortIntervalMs { get{ return config.shortIntervalMs; } }
         public static int LongIntervalMs { get{ return config.longIntervalMs; } }
 

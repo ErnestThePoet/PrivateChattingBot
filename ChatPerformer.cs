@@ -45,7 +45,7 @@ namespace PrivateChattingBot
                 chatTargets, finishedChatTargets);
         }
 
-        public void DoChats(string text)
+        public void DoChats(string message)
         {
             if (isStarted|| chatTargets.Count==0)
             {
@@ -77,7 +77,7 @@ namespace PrivateChattingBot
 
                     // Press enter to open chat window
                     KeyboardSender.SendEnter();
-                    Clipboard.SetText(text);
+                    Clipboard.SetText(message);
                     Thread.Sleep(ConfigManager.LongIntervalMs);
 
                     // Focus message box
@@ -93,9 +93,12 @@ namespace PrivateChattingBot
                     KeyboardSender.SendCtrlV();
                     Thread.Sleep(ConfigManager.ShortIntervalMs);
 
-                    // Press Ctrl+Enter to send message
-                    KeyboardSender.SendCtrlEnter();
-                    Thread.Sleep(ConfigManager.ShortIntervalMs);
+                    if (!ConfigManager.PasteOnly)
+                    {
+                        // Press Ctrl+Enter to send message
+                        KeyboardSender.SendCtrlEnter();
+                        Thread.Sleep(ConfigManager.ShortIntervalMs);
+                    }
 
                     // Close chat window
                     KeyboardSender.SendAltF4();

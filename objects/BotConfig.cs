@@ -8,6 +8,7 @@ namespace PrivateChattingBot.objects
 {
     internal class BotConfig
     {
+        public bool pasteOnly { get; set; }
         public int shortIntervalMs { get; set; }
         public int longIntervalMs { get; set; }
 
