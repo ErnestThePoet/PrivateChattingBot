@@ -15,7 +15,9 @@ for i in os.listdir("./"):
             "qqId": j["uin"]
         })
 
-    print(i)
+    print(f"{len(members_info)} from {i}")
 
 with open("../data/members.json", "w", encoding="utf-8") as f_out:
     f_out.write(json.dumps(joined_members, ensure_ascii=False))
+
+print(f"A total of {len(joined_members)} is written.")

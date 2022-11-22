@@ -10,10 +10,11 @@
 *.userosscache
 *.sln.docstates
 
+/dist
 /data/*
 !/data/config.json
 /rawdata/*
-!/rawdata/convert.py
+!/rawdata/*.py
 /uires_raw
 
 # User-specific files (MonoDevelop/Xamarin Studio)
