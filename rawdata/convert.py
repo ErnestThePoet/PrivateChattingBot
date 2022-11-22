@@ -17,6 +17,12 @@ for i in os.listdir("./"):
 
     print(f"{len(members_info)} from {i}")
 
+for i, ie in enumerate(joined_members):
+    for j in joined_members[i + 1:]:
+        if ie["cardName"] != "" and ie["cardName"] == j["cardName"]:
+            print(f"Duplication detected: "
+                  f"{ie['cardName']}({ie['qqId']}) and {j['cardName']}({j['qqId']})")
+
 with open("../data/members.json", "w", encoding="utf-8") as f_out:
     f_out.write(json.dumps(joined_members, ensure_ascii=False))
 

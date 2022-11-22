@@ -18,20 +18,20 @@ for i in os.listdir("./"):
         found_full_card_names = False
 
         purified_cardname = \
-            j["card"] \
-                .replace("?", "") \
+            j["card"].replace("?", "") \
                 .replace("&nbsp;", "") \
                 .replace(" ", "") \
                 .replace(" ", "")
 
         for k in full_cardnames:
-            if k.startswith(purified_cardname):
+            # Those who didn't set cardname will have empty card name
+            if purified_cardname != "" and k.startswith(purified_cardname):
                 j["card"] = k
                 found_full_card_names = True
                 break
 
         if not found_full_card_names:
-            print(f"No full cardname found for {purified_cardname}")
+            print(f"No full cardname found for {purified_cardname}({j['nick']})({j['uin']})")
 
     with open(i, "w", encoding="utf-8") as f_out:
         f_out.write(json.dumps(members_info, ensure_ascii=False))
