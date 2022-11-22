@@ -75,7 +75,7 @@ namespace PrivateChattingBot
         public void SetRunningState(string name)
         {
             context.lblAppState.Background = new SolidColorBrush(
-                Color.FromArgb(128,0xD3, 0xFF, 0xD2));
+                Color.FromArgb(72,0xD3, 0xFF, 0xD2));
             context.lblAppState.Foreground = new SolidColorBrush(Colors.Green);
             context.lblAppState.Content = 
                 $"{FindString("RunningStateText")} - {name}";
@@ -84,7 +84,7 @@ namespace PrivateChattingBot
         public void SetStopState()
         {
             context.lblAppState.Background = new SolidColorBrush(
-                Color.FromArgb(128,0xD2, 0xE2, 0xFF));
+                Color.FromArgb(72,0xD2, 0xE2, 0xFF));
             context.lblAppState.Foreground = new SolidColorBrush(Colors.Blue);
             context.lblAppState.Content = FindString("StopStateText");
         }
