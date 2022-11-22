@@ -14,7 +14,7 @@
     <Window.Background>
         <ImageBrush ImageSource="./uires/bkg.png"/>
     </Window.Background>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -23,10 +23,32 @@
         </Grid.RowDefinitions>
 
         <DockPanel Grid.Row="0">
-            <Label x:Name="lblMessageToSend" 
-                   Content="{StaticResource MessageToSendTitle}"
-                       DockPanel.Dock="Top" 
-                       HorizontalAlignment="Center"/>
+            <StackPanel DockPanel.Dock="Top"
+                        Orientation="Horizontal">
+                <Label x:Name="lblMessageToSend" 
+                       Content="{StaticResource MessageToSendTitle}"
+                       Width="500"
+                       HorizontalContentAlignment="Center"/>
+
+                <Canvas>
+                    <TextBlock Text="{StaticResource SettingsLabel}"
+                           Canvas.Right="20"
+                           Padding="5"
+                           Foreground="Blue"
+                           Cursor="Hand" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown">
+                        <TextBlock.TextDecorations>
+                            <TextDecorationCollection>
+                                <TextDecoration  
+                                    PenThicknessUnit="FontRecommended">
+                                    <TextDecoration.Pen>
+                                        <Pen Thickness="1.5" Brush="Blue"/>
+                                    </TextDecoration.Pen>
+                                </TextDecoration>
+                            </TextDecorationCollection>
+                        </TextBlock.TextDecorations>
+                    </TextBlock>
+                </Canvas>
+            </StackPanel>
 
             <TextBox x:Name="tbMessageToSend" 
                  Padding="5px" 

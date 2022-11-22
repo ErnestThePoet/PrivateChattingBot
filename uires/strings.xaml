@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <!-- MainWindow Strings-->
     <sys:String x:Key="AppWindowTitle">
         Ernest的私聊机器人
     </sys:String>
@@ -9,16 +10,20 @@
         仅粘贴消息
     </sys:String>
 
+    <sys:String x:Key="MessageToSendTitle">
+        要发送的消息
+    </sys:String>
+
+    <sys:String x:Key="SettingsLabel">
+        设置
+    </sys:String>
+
     <sys:String x:Key="ChatTargetListTitle">
         私聊目标列表
     </sys:String>
-    
+
     <sys:String x:Key="FinishedChatTargetListTitle">
         私聊完成列表
-    </sys:String>
-
-    <sys:String x:Key="MessageToSendTitle">
-        要发送的消息
     </sys:String>
 
     <sys:String x:Key="UninitializedStateText">
@@ -31,5 +36,38 @@
 
     <sys:String x:Key="StopStateText">
         已停止
+    </sys:String>
+
+    <!-- SettingsWindow Strings-->
+    <sys:String x:Key="SettingsWindowTitle">
+        设置
+    </sys:String>
+
+    <sys:String x:Key="PasteOnlyLabel">
+        仅粘贴消息而不发送
+    </sys:String>
+
+    <sys:String x:Key="ShortIntervalMsLabel">
+        短操作间隔(ms)
+    </sys:String>
+
+    <sys:String x:Key="LongIntervalMsLabel">
+        长操作间隔(ms)
+    </sys:String>
+
+    <sys:String x:Key="SearchBarCoordLabel">
+        QQ群成员搜索框坐标(X,Y)
+    </sys:String>
+
+    <sys:String x:Key="MessageBoxCoordLabel">
+        QQ聊天消息输入框坐标(X,Y)
+    </sys:String>
+
+    <sys:String x:Key="ButtonOkText">
+        确定
+    </sys:String>
+
+    <sys:String x:Key="ButtonCancelText">
+        取消
     </sys:String>
 </ResourceDictionary>

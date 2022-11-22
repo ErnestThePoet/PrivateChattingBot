@@ -94,5 +94,10 @@ namespace PrivateChattingBot
         {
             keyboardListener.UnHookKeyboard();
         }
+
+        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            new SettingsWindow().ShowDialog();
+        }
     }
 }

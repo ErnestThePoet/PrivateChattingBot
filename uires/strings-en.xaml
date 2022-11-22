@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <!-- MainWindow Strings-->
     <sys:String x:Key="AppWindowTitle">
         Ernest's Private Chatting Bot
     </sys:String>
@@ -9,16 +10,20 @@
         Paste Only
     </sys:String>
 
+    <sys:String x:Key="MessageToSendTitle">
+        Message To Send
+    </sys:String>
+
+    <sys:String x:Key="SettingsLabel">
+        Settings
+    </sys:String>
+
     <sys:String x:Key="ChatTargetListTitle">
         Chat Target List
     </sys:String>
-    
+
     <sys:String x:Key="FinishedChatTargetListTitle">
         Finished Chat Target List
-    </sys:String>
-
-    <sys:String x:Key="MessageToSendTitle">
-        Message To Send
     </sys:String>
 
     <sys:String x:Key="UninitializedStateText">
@@ -31,5 +36,38 @@
 
     <sys:String x:Key="StopStateText">
         STOPPED
+    </sys:String>
+
+    <!-- SettingsWindow Strings-->
+    <sys:String x:Key="SettingsWindowTitle">
+        Settings
+    </sys:String>
+
+    <sys:String x:Key="PasteOnlyLabel">
+        Paste message only without sending
+    </sys:String>
+
+    <sys:String x:Key="ShortIntervalMsLabel">
+        Short operation interval(ms)
+    </sys:String>
+
+    <sys:String x:Key="LongIntervalMsLabel">
+        Long operation interval(ms)
+    </sys:String>
+
+    <sys:String x:Key="SearchBarCoordLabel">
+        Search bar coordination(X,Y)
+    </sys:String>
+
+    <sys:String x:Key="MessageBoxCoordLabel">
+        Message box coordination(X,Y)
+    </sys:String>
+
+    <sys:String x:Key="ButtonOkText">
+        OK
+    </sys:String>
+
+    <sys:String x:Key="ButtonCancelText">
+        Cancel
     </sys:String>
 </ResourceDictionary>
