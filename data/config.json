@@ -1,4 +1,6 @@
 {
+    "pasteOnly":false,
+    
     "shortIntervalMs":100,
     "longIntervalMs":500,
 

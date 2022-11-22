@@ -39,6 +39,10 @@
     </sys:String>
 
     <!-- SettingsWindow Strings-->
+    <sys:Double x:Key="SettingsWindowWidth">
+        250
+    </sys:Double>
+    
     <sys:String x:Key="SettingsWindowTitle">
         设置
     </sys:String>

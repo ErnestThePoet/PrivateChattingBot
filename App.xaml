@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:PrivateChattingBot"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <ResourceDictionary Source="uires/strings.xaml"/>
+        <ResourceDictionary Source="uires/uires.xaml"/>
     </Application.Resources>
 </Application>
