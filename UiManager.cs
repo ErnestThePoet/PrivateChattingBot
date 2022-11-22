@@ -57,9 +57,18 @@ namespace PrivateChattingBot
                 x=>$"{x.name} - {x.chatTime.ToString("yyyy-MM-dd HH:mm:ss")}");
         }
 
-        public void SetPasteOnlyTitle()
+        public void UpdatePasteOnlyTitle()
         {
-            context.window.Title += $" - [{FindString("PasteOnlyTitle")}]";
+            if (ConfigManager.PasteOnly)
+            {
+                context.window.Title = 
+                    $"{FindString("AppWindowTitle")} - " +
+                    $"[{FindString("PasteOnlyTitle")}]";
+            }
+            else
+            {
+                context.window.Title = FindString("AppWindowTitle");
+            }
         }
 
         public void UpdateTwoListsAndTitles(

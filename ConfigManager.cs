@@ -43,6 +43,35 @@ namespace PrivateChattingBot
             }
         }
 
+        public static void UpdateAndSave(
+            bool pasteOnly,
+            int shortIntervalMs,
+            int longIntervalMs,
+            int searchBarX,
+            int searchBarY,
+            int messageBoxX,
+            int messageBoxY)
+        {
+            config.pasteOnly = pasteOnly;
+            config.shortIntervalMs = shortIntervalMs;
+            config.longIntervalMs = longIntervalMs;
+            config.searchBarX = searchBarX;
+            config.searchBarY = searchBarY;
+            config.messageBoxX = messageBoxX;
+            config.messageBoxY = messageBoxY;
+
+            try
+            {
+                File.WriteAllText(
+                    AppDomain.CurrentDomain.BaseDirectory + JSON_FILE_PATH,
+                    JsonConvert.SerializeObject(config,Formatting.Indented));
+            }
+            catch
+            {
+                MessageBox.Show($"Failed to save {JSON_FILE_PATH}");
+            }
+        }
+
         public static bool PasteOnly { get { return config.pasteOnly; } }
         public static int ShortIntervalMs { get{ return config.shortIntervalMs; } }
         public static int LongIntervalMs { get{ return config.longIntervalMs; } }

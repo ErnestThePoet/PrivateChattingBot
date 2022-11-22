@@ -36,10 +36,7 @@ namespace PrivateChattingBot
             uiManager = new UiManager(this);
             chatPerformer = new ChatPerformer(uiManager);
 
-            if (ConfigManager.PasteOnly)
-            {
-                uiManager.SetPasteOnlyTitle();
-            }
+            uiManager.UpdatePasteOnlyTitle();
 
             keyboardListener.OnKeyPressed += OnKeyPressed;
             keyboardListener.HookKeyboard();
@@ -97,7 +94,13 @@ namespace PrivateChattingBot
 
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            new SettingsWindow().ShowDialog();
+            if (!chatPerformer.GetIsStarted())
+            {
+                new SettingsWindow(() =>
+                {
+                    uiManager.UpdatePasteOnlyTitle();
+                }).ShowDialog();
+            }
         }
     }
 }

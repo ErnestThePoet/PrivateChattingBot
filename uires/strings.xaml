@@ -70,4 +70,20 @@
     <sys:String x:Key="ButtonCancelText">
         取消
     </sys:String>
+
+    <sys:String x:Key="ShortIntervalMsInvalidMessage">
+        短操作间隔必须是正整数
+    </sys:String>
+
+    <sys:String x:Key="LongIntervalMsInvalidMessage">
+        长操作间隔必须是正整数
+    </sys:String>
+
+    <sys:String x:Key="SearchBarCoordInvalidMessage">
+        QQ群成员搜索框坐标(X,Y)必须都是正整数
+    </sys:String>
+
+    <sys:String x:Key="MessageBoxCoordInvalidMessage">
+        QQ聊天消息输入框坐标(X,Y)必须都是正整数
+    </sys:String>
 </ResourceDictionary>

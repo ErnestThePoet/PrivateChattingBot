@@ -9,7 +9,7 @@
         Width="250"
         Height="300"
         ResizeMode="NoResize" 
-        WindowStyle="ToolWindow">
+        WindowStyle="ToolWindow" Closed="Window_Closed">
     <DockPanel LastChildFill="False" Margin="15,15,15,10">
         <StackPanel DockPanel.Dock="Top">
             <CheckBox x:Name="cbPasteOnly" 
@@ -63,10 +63,12 @@
             <Button x:Name="btnCancel" 
                     Padding="8,3"
                     Margin="0,0,10,0"
-                    Content="{StaticResource ButtonCancelText}"/>
+                    Content="{StaticResource ButtonCancelText}" 
+                    Click="btnCancel_Click"/>
             <Button x:Name="btnOk" 
                     Padding="8,3"
-                    Content="{StaticResource ButtonOkText}"/>
+                    Content="{StaticResource ButtonOkText}" 
+                    Click="btnOk_Click"/>
         </StackPanel>
     </DockPanel>
 </Window>

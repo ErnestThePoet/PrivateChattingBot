@@ -70,4 +70,20 @@
     <sys:String x:Key="ButtonCancelText">
         Cancel
     </sys:String>
+
+    <sys:String x:Key="ShortIntervalMsInvalidMessage">
+        Short operation interval must be a positive integer
+    </sys:String>
+
+    <sys:String x:Key="LongIntervalMsInvalidMessage">
+        Long operation interval must be a positive integer
+    </sys:String>
+
+    <sys:String x:Key="SearchBarCoordInvalidMessage">
+        Search bar coordinations must be positive integers
+    </sys:String>
+
+    <sys:String x:Key="MessageBoxCoordInvalidMessage">
+        Message box coordinations must be positive integers
+    </sys:String>
 </ResourceDictionary>
