@@ -17,12 +17,26 @@
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
             <RowDefinition Height="2*"/>
+            <RowDefinition Height="5*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
+        <DockPanel Grid.Row="0">
+            <Label x:Name="lblMessageToSend" 
+                   Content="{StaticResource MessageToSendTitle}"
+                       DockPanel.Dock="Top" 
+                       HorizontalAlignment="Center"/>
+
+            <TextBox x:Name="tbMessageToSend" 
+                 Padding="5px" 
+                 FontSize="18px"
+                 AcceptsReturn="True" 
+                 AcceptsTab="True" 
+                 VerticalScrollBarVisibility="Auto" Background="{x:Null}"/>
+        </DockPanel>
+
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -57,20 +71,6 @@
                          Background="{x:Null}"/>
             </DockPanel>
         </Grid>
-
-        <DockPanel Grid.Row="1">
-            <Label x:Name="lblMessageToSend" 
-                   Content="{StaticResource MessageToSendTitle}"
-                       DockPanel.Dock="Top" 
-                       HorizontalAlignment="Center"/>
-
-            <TextBox x:Name="tbMessageToSend" 
-                 Padding="5px" 
-                 FontSize="18px"
-                 AcceptsReturn="True" 
-                 AcceptsTab="True" 
-                 VerticalScrollBarVisibility="Auto" Background="{x:Null}"/>
-        </DockPanel>
 
         <Label x:Name="lblAppState" 
                Grid.Row="2" 
