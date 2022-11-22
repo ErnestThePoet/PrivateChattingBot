@@ -14,16 +14,22 @@ namespace PrivateChattingBot
         {
             this.context = context;
         }
+
+        private string FindString(string key)
+        {
+            return context.FindResource(key).ToString();
+        }
+
         private void SetChatTargetListTitle(int count)
         {
             context.lblChatTargetList.Content =
-                $"Chat Target List ({count})";
+                $"{FindString("ChatTargetListTitle")} ({count})";
         }
 
         private void SetFinishedChatTargetListTitle(int count)
         {
             context.lblFinishedTargetList.Content =
-                $"Finished Chat Target List ({count})";
+                $"{FindString("FinishedChatTargetListTitle")} ({count})";
         }
 
         private string GetLines(
@@ -51,6 +57,11 @@ namespace PrivateChattingBot
                 x=>$"{x.name} - {x.chatTime.ToString("yyyy-MM-dd HH:mm:ss")}");
         }
 
+        public void SetPasteOnlyTitle()
+        {
+            context.window.Title += $" - [{FindString("PasteOnlyTitle")}]";
+        }
+
         public void UpdateTwoListsAndTitles(
             List<ChatTarget> chatTargets, 
             List<ChatTarget> finishedChatTargets)
@@ -66,7 +77,8 @@ namespace PrivateChattingBot
             context.lblAppState.Background = new SolidColorBrush(
                 Color.FromArgb(128,0xD3, 0xFF, 0xD2));
             context.lblAppState.Foreground = new SolidColorBrush(Colors.Green);
-            context.lblAppState.Content = $"RUNNING - {name}";
+            context.lblAppState.Content = 
+                $"{FindString("RunningStateText")} - {name}";
         }
 
         public void SetStopState()
@@ -74,7 +86,7 @@ namespace PrivateChattingBot
             context.lblAppState.Background = new SolidColorBrush(
                 Color.FromArgb(128,0xD2, 0xE2, 0xFF));
             context.lblAppState.Foreground = new SolidColorBrush(Colors.Blue);
-            context.lblAppState.Content = "STOPPED";
+            context.lblAppState.Content = FindString("StopStateText");
         }
     }
 }

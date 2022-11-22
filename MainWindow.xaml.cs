@@ -32,18 +32,17 @@ namespace PrivateChattingBot
             ConfigManager.Load();
             DatabaseManager.Load();
 
+            keyboardListener = new KeyboardListener();
+            uiManager = new UiManager(this);
+            chatPerformer = new ChatPerformer(uiManager);
+
             if (ConfigManager.PasteOnly)
             {
-                window.Title += " - [Paste Only]";
+                uiManager.SetPasteOnlyTitle();
             }
 
-            keyboardListener = new KeyboardListener();
             keyboardListener.OnKeyPressed += OnKeyPressed;
             keyboardListener.HookKeyboard();
-
-            uiManager = new UiManager(this);
-
-            chatPerformer = new ChatPerformer(uiManager);
 
             uiManager.SetStopState();
         }

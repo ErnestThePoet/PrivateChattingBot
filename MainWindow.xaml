@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PrivateChattingBot"
         mc:Ignorable="d"
         x:Name="window"
-        Title="Ernest's Private Chatting Bot" 
+        Title="{StaticResource AppWindowTitle}" 
         Height="700" 
         Width="500" 
         Closed="Window_Closed" 
@@ -30,10 +30,9 @@
 
             <DockPanel Grid.Column="0">
                 <Label x:Name="lblChatTargetList" 
+                       Content="{StaticResource ChatTargetListTitle}"
                        DockPanel.Dock="Top" 
-                       HorizontalAlignment="Center">
-                    Chat Target List
-                </Label>
+                       HorizontalAlignment="Center"/>
                 <TextBox x:Name="tbChatTargetList" 
                          Padding="5px" 
                          FontSize="14px"
@@ -45,10 +44,9 @@
 
             <DockPanel Grid.Column="1">
                 <Label x:Name="lblFinishedTargetList" 
+                       Content="{StaticResource FinishedChatTargetListTitle}"
                        DockPanel.Dock="Top" 
-                       HorizontalAlignment="Center">
-                    Finished Chat Target List
-                </Label>
+                       HorizontalAlignment="Center"/>
                 <TextBox x:Name="tbFinishedTargetList" 
                          Padding="5px" 
                          FontSize="14px"
@@ -62,10 +60,9 @@
 
         <DockPanel Grid.Row="1">
             <Label x:Name="lblMessageToSend" 
+                   Content="{StaticResource MessageToSendTitle}"
                        DockPanel.Dock="Top" 
-                       HorizontalAlignment="Center">
-                Message To Send
-            </Label>
+                       HorizontalAlignment="Center"/>
 
             <TextBox x:Name="tbMessageToSend" 
                  Padding="5px" 
@@ -75,7 +72,9 @@
                  VerticalScrollBarVisibility="Auto" Background="{x:Null}"/>
         </DockPanel>
 
-        <Label x:Name="lblAppState" Grid.Row="2" Content="Uninitialized"
+        <Label x:Name="lblAppState" 
+               Grid.Row="2" 
+               Content="{StaticResource UninitializedStateText}"
                VerticalContentAlignment="Center"
                HorizontalContentAlignment="Center"
                FontSize="40px"/>
