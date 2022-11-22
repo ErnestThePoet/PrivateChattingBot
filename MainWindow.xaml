@@ -5,10 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrivateChattingBot"
         mc:Ignorable="d"
+        x:Name="window"
         Title="Ernest's Private Chatting Bot" 
         Height="700" 
         Width="500" 
-        Closed="Window_Closed" ResizeMode="CanMinimize">
+        Closed="Window_Closed" 
+        ResizeMode="CanMinimize">
     <Window.Background>
         <ImageBrush ImageSource="./uires/bkg.png"/>
     </Window.Background>

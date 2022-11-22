@@ -32,6 +32,11 @@ namespace PrivateChattingBot
             ConfigManager.Load();
             DatabaseManager.Load();
 
+            if (ConfigManager.PasteOnly)
+            {
+                window.Title += " - [Paste Only]";
+            }
+
             keyboardListener = new KeyboardListener();
             keyboardListener.OnKeyPressed += OnKeyPressed;
             keyboardListener.HookKeyboard();
