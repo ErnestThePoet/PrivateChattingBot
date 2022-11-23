@@ -84,7 +84,7 @@ namespace PrivateChattingBot
                 || searchBarY<=0)
             {
                 MessageBox.Show(
-                    UiResManager.FindString("SearchBarCoordInvalidMessage"),
+                    UiResManager.FindString("SearchBarClickCoordInvalidMessage"),
                     UiResManager.FindString("ErrorTitle"),
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
@@ -97,7 +97,7 @@ namespace PrivateChattingBot
                 || messageBoxY <= 0)
             {
                 MessageBox.Show(
-                    UiResManager.FindString("MessageBoxCoordInvalidMessage"),
+                    UiResManager.FindString("MessageBoxClickCoordInvalidMessage"),
                     UiResManager.FindString("ErrorTitle"),
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);

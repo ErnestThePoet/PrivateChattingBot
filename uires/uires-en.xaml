@@ -76,12 +76,12 @@
         Long operation interval(ms):
     </sys:String>
 
-    <sys:String x:Key="SearchBarCoordLabel">
-        Search bar coordination(X,Y):
+    <sys:String x:Key="SearchBarClickCoordLabel">
+        Search bar click coordinate(X,Y):
     </sys:String>
 
-    <sys:String x:Key="MessageBoxCoordLabel">
-        Message box coordination(X,Y):
+    <sys:String x:Key="MessageBoxClickCoordLabel">
+        Message box click coordinate(X,Y):
     </sys:String>
 
     <sys:String x:Key="ButtonOkText">
@@ -100,11 +100,11 @@
         Long operation interval must be a positive integer
     </sys:String>
 
-    <sys:String x:Key="SearchBarCoordInvalidMessage">
-        Search bar coordinations must be positive integers
+    <sys:String x:Key="SearchBarClickCoordInvalidMessage">
+        Search bar click coordinate X and Y must be positive integers
     </sys:String>
 
-    <sys:String x:Key="MessageBoxCoordInvalidMessage">
-        Message box coordinations must be positive integers
+    <sys:String x:Key="MessageBoxClickCoordInvalidMessage">
+        Message box click coordinate X and Y must be positive integers
     </sys:String>
 </ResourceDictionary>

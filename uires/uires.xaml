@@ -76,12 +76,12 @@
         长操作间隔(ms):
     </sys:String>
 
-    <sys:String x:Key="SearchBarCoordLabel">
-        QQ群成员搜索框坐标(X,Y):
+    <sys:String x:Key="SearchBarClickCoordLabel">
+        QQ群成员搜索框点击坐标(X,Y):
     </sys:String>
 
-    <sys:String x:Key="MessageBoxCoordLabel">
-        QQ聊天消息输入框坐标(X,Y):
+    <sys:String x:Key="MessageBoxClickCoordLabel">
+        QQ聊天消息输入框点击坐标(X,Y):
     </sys:String>
 
     <sys:String x:Key="ButtonOkText">
@@ -100,11 +100,11 @@
         长操作间隔必须是正整数
     </sys:String>
 
-    <sys:String x:Key="SearchBarCoordInvalidMessage">
-        QQ群成员搜索框坐标(X,Y)必须都是正整数
+    <sys:String x:Key="SearchBarClickCoordInvalidMessage">
+        QQ群成员搜索框点击坐标(X,Y)必须都是正整数
     </sys:String>
 
-    <sys:String x:Key="MessageBoxCoordInvalidMessage">
-        QQ聊天消息输入框坐标(X,Y)必须都是正整数
+    <sys:String x:Key="MessageBoxClickCoordInvalidMessage">
+        QQ聊天消息输入框点击坐标(X,Y)必须都是正整数
     </sys:String>
 </ResourceDictionary>
