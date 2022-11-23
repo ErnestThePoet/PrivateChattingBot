@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PrivateChattingBot.managers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,21 +16,16 @@ namespace PrivateChattingBot
             this.context = context;
         }
 
-        private string FindString(string key)
-        {
-            return context.FindResource(key).ToString();
-        }
-
         private void SetChatTargetListTitle(int count)
         {
             context.lblChatTargetList.Content =
-                $"{FindString("ChatTargetListTitle")} ({count})";
+                $"{UiResManager.FindString("ChatTargetListTitle")} ({count})";
         }
 
         private void SetFinishedChatTargetListTitle(int count)
         {
             context.lblFinishedTargetList.Content =
-                $"{FindString("FinishedChatTargetListTitle")} ({count})";
+                $"{UiResManager.FindString("FinishedChatTargetListTitle")} ({count})";
         }
 
         private string GetLines(
@@ -62,12 +58,12 @@ namespace PrivateChattingBot
             if (ConfigManager.PasteOnly)
             {
                 context.window.Title = 
-                    $"{FindString("AppWindowTitle")} - " +
-                    $"[{FindString("PasteOnlyTitle")}]";
+                    $"{UiResManager.FindString("AppWindowTitle")} - " +
+                    $"[{UiResManager.FindString("PasteOnlyTitle")}]";
             }
             else
             {
-                context.window.Title = FindString("AppWindowTitle");
+                context.window.Title = UiResManager.FindString("AppWindowTitle");
             }
         }
 
@@ -87,7 +83,7 @@ namespace PrivateChattingBot
                 Color.FromArgb(72,0xD3, 0xFF, 0xD2));
             context.lblAppState.Foreground = new SolidColorBrush(Colors.Green);
             context.lblAppState.Content = 
-                $"{FindString("RunningStateText")} - {name}";
+                $"{UiResManager.FindString("RunningStateText")} - {name}";
         }
 
         public void SetStopState()
@@ -95,7 +91,7 @@ namespace PrivateChattingBot
             context.lblAppState.Background = new SolidColorBrush(
                 Color.FromArgb(72,0xD2, 0xE2, 0xFF));
             context.lblAppState.Foreground = new SolidColorBrush(Colors.Blue);
-            context.lblAppState.Content = FindString("StopStateText");
+            context.lblAppState.Content = UiResManager.FindString("StopStateText");
         }
     }
 }

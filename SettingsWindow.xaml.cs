@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PrivateChattingBot.managers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
@@ -39,11 +40,6 @@ namespace PrivateChattingBot
             tbMessageBoxY.Text = ConfigManager.MessageBoxY.ToString();
         }
 
-        private string FindString(string key)
-        {
-            return FindResource(key).ToString();
-        }
-
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
@@ -63,16 +59,22 @@ namespace PrivateChattingBot
             if (!int.TryParse(tbShortIntervalMs.Text, out shortIntervalMs)
                 ||shortIntervalMs<=0)
             {
-                MessageBox.Show(FindString("ShortIntervalMsInvalidMessage"));
-                Close();
+                MessageBox.Show(
+                    UiResManager.FindString("ShortIntervalMsInvalidMessage"),
+                    UiResManager.FindString("ErrorTitle"),
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
                 return;
             }
 
             if (!int.TryParse(tbLongIntervalMs.Text, out longIntervalMs)
                 || longIntervalMs <= 0)
             {
-                MessageBox.Show(FindString("LongIntervalMsInvalidMessage"));
-                Close();
+                MessageBox.Show(
+                    UiResManager.FindString("LongIntervalMsInvalidMessage"),
+                    UiResManager.FindString("ErrorTitle"),
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
                 return;
             }
 
@@ -81,8 +83,11 @@ namespace PrivateChattingBot
                 || searchBarX <= 0
                 || searchBarY<=0)
             {
-                MessageBox.Show(FindString("SearchBarCoordInvalidMessage"));
-                Close();
+                MessageBox.Show(
+                    UiResManager.FindString("SearchBarCoordInvalidMessage"),
+                    UiResManager.FindString("ErrorTitle"),
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
                 return;
             }
 
@@ -91,8 +96,11 @@ namespace PrivateChattingBot
                 || messageBoxX <= 0
                 || messageBoxY <= 0)
             {
-                MessageBox.Show(FindString("MessageBoxCoordInvalidMessage"));
-                Close();
+                MessageBox.Show(
+                    UiResManager.FindString("MessageBoxCoordInvalidMessage"),
+                    UiResManager.FindString("ErrorTitle"),
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
                 return;
             }
 

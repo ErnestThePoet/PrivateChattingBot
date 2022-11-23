@@ -61,19 +61,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ConfigManager.cs" />
+    <Compile Include="managers\ConfigManager.cs" />
+    <Compile Include="managers\UiResManager.cs" />
     <Compile Include="objects\BotConfig.cs" />
     <Compile Include="objects\ChatTarget.cs" />
     <Compile Include="SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UiManager.cs" />
+    <Compile Include="managers\UiManager.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="ChatPerformer.cs" />
-    <Compile Include="DatabaseManager.cs" />
+    <Compile Include="managers\DatabaseManager.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>

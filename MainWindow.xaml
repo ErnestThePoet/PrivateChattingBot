@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         x:Name="window"
         Title="{StaticResource AppWindowTitle}" 
-        Height="700" 
         Width="500" 
+        Height="700" 
         Closed="Window_Closed" 
         ResizeMode="CanMinimize">
     <Window.Background>

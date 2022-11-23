@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.IO;
+using PrivateChattingBot.managers;
 
 namespace PrivateChattingBot
 {
@@ -26,7 +27,12 @@ namespace PrivateChattingBot
             }
             catch
             {
-                MessageBox.Show($"Failed to load {JSON_FILE_PATH}");
+                MessageBox.Show(
+                    $"{UiResManager.FindString("FailedToLoadText")} " +
+                    $"{JSON_FILE_PATH}",
+                    UiResManager.FindString("ErrorTitle"),
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
                 Application.Current.Shutdown();
             }
 
@@ -38,7 +44,12 @@ namespace PrivateChattingBot
             catch (Exception ex)
             {
                 MessageBox.Show(
-                    $"{JSON_FILE_PATH} deserialization error: " + ex.Message);
+                    $"{JSON_FILE_PATH} " +
+                    $"{UiResManager.FindString("DeserializationErrorText")}: " +
+                    $"{ex.Message}",
+                    UiResManager.FindString("ErrorTitle"),
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
                 Application.Current.Shutdown();
             }
         }
@@ -68,7 +79,12 @@ namespace PrivateChattingBot
             }
             catch
             {
-                MessageBox.Show($"Failed to save {JSON_FILE_PATH}");
+                MessageBox.Show(
+                    $"{UiResManager.FindString("FailedToSaveText")} " +
+                    $"{JSON_FILE_PATH}",
+                    UiResManager.FindString("ErrorTitle"),
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
             }
         }
 

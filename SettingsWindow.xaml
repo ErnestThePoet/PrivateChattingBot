@@ -8,8 +8,11 @@
         Title="{StaticResource SettingsWindowTitle}" 
         Width="{StaticResource SettingsWindowWidth}"
         Height="300"
+        Background="#f1f7fc"
+        Closed="Window_Closed"
         ResizeMode="NoResize" 
-        WindowStyle="ToolWindow" Closed="Window_Closed">
+        ShowInTaskbar="False"
+        WindowStyle="ToolWindow">
     <DockPanel LastChildFill="False" Margin="15,15,15,10">
         <StackPanel DockPanel.Dock="Top">
             <CheckBox x:Name="cbPasteOnly" 
