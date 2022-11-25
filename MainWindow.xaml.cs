@@ -50,7 +50,8 @@ namespace PrivateChattingBot
         {
             List<ChatTarget> chatTargets = new List<ChatTarget>();
 
-            var splited = rawCardNames.Split("\r\n".ToCharArray());
+            var splited = rawCardNames.Split(
+                new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
 
             foreach (var line in splited)
             {

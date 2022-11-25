@@ -28,7 +28,7 @@
     </sys:String>
 
     <sys:String x:Key="MessageToSendTitle">
-        要发送的消息
+        发送消息候选列表(每行一个)
     </sys:String>
 
     <sys:String x:Key="SettingsLabel">
@@ -36,7 +36,7 @@
     </sys:String>
 
     <sys:String x:Key="ChatTargetListTitle">
-        私聊目标列表
+        私聊目标列表(每行一个)
     </sys:String>
 
     <sys:String x:Key="FinishedChatTargetListTitle">

@@ -45,9 +45,18 @@ namespace PrivateChattingBot
                 chatTargets, finishedChatTargets);
         }
 
-        public void DoChats(string message)
+        public void DoChats(string rawMessages)
         {
             if (isStarted|| chatTargets.Count==0)
+            {
+                return;
+            }
+
+            var messages = rawMessages.Split(
+                new string[] {"\r\n"},StringSplitOptions.RemoveEmptyEntries);
+            int currentMessageIndex = 0;
+
+            if (messages.Length == 0)
             {
                 return;
             }
@@ -77,7 +86,7 @@ namespace PrivateChattingBot
 
                     // Press enter to open chat window
                     KeyboardSender.SendEnter();
-                    Clipboard.SetText(message);
+                    Clipboard.SetText(messages[currentMessageIndex]);
                     Thread.Sleep(ConfigManager.LongIntervalMs);
 
                     // Focus message box
@@ -106,6 +115,15 @@ namespace PrivateChattingBot
                     currentChatTarget.chatTime = DateTime.Now;
                     finishedChatTargets.Add(currentChatTarget);
                     chatTargets.RemoveAt(i);
+
+                    if (currentMessageIndex < messages.Length - 1)
+                    {
+                        currentMessageIndex++;
+                    }
+                    else
+                    {
+                        currentMessageIndex = 0;
+                    }
 
                     RunOnUiThread(() =>
                     {
