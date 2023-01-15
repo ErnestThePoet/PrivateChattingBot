@@ -17,13 +17,11 @@ namespace PrivateChattingBot
 
         private List<ChatTarget> chatTargets;
         private List<ChatTarget> finishedChatTargets;
+        private List<string> discardedNames;
 
         public ChatPerformer(UiManager uiManager)
-        {
-            chatTargets = new List<ChatTarget>();
-            finishedChatTargets = new List<ChatTarget>();
-            this.uiManager = uiManager;
-        }
+            => (chatTargets, finishedChatTargets, this.uiManager)
+                = (new List<ChatTarget>(), new List<ChatTarget>(), uiManager);
 
         private void RunOnUiThread(Action action)
         {
@@ -38,22 +36,23 @@ namespace PrivateChattingBot
             return isStarted;
         }
 
-        public void SetChatTargets(List<ChatTarget> chatTargets)
+        public void SetChatTargets(List<ChatTarget> chatTargets, List<string> discardedNames)
         {
             this.chatTargets = chatTargets;
             uiManager.UpdateTwoListsAndTitles(
                 chatTargets, finishedChatTargets);
+            this.discardedNames = discardedNames;
         }
 
         public void DoChats(string rawMessages)
         {
-            if (isStarted|| chatTargets.Count==0)
+            if (isStarted || chatTargets.Count == 0)
             {
                 return;
             }
 
             var messages = rawMessages.Split(
-                new string[] {"\r\n"},StringSplitOptions.RemoveEmptyEntries);
+                new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
             int currentMessageIndex = 0;
 
             if (messages.Length == 0)
@@ -63,11 +62,11 @@ namespace PrivateChattingBot
 
             isStarted = true;
 
-            Thread chatThread=new Thread(() =>
+            Thread chatThread = new Thread(() =>
             {
-                for(int i=0;isStarted&&i< chatTargets.Count;)
+                for (int i = 0; isStarted && i < chatTargets.Count;)
                 {
-                    var currentChatTarget= chatTargets[i];
+                    var currentChatTarget = chatTargets[i];
 
                     RunOnUiThread(() =>
                     {
@@ -126,15 +125,14 @@ namespace PrivateChattingBot
                     }
 
                     RunOnUiThread(() =>
-                    {
                         uiManager.UpdateTwoListsAndTitles(
-                            chatTargets, finishedChatTargets);
-                    });
+                            chatTargets, finishedChatTargets)
+                    );
                 }
 
                 if (chatTargets.Count == 0)
                 {
-                    RunOnUiThread(Stop);
+                    RunOnUiThread(() => Stop(false));
                 }
             });
 
@@ -142,10 +140,21 @@ namespace PrivateChattingBot
             chatThread.Start();
         }
 
-        public void Stop()
+        public void Stop(bool isPause)
         {
             isStarted = false;
             uiManager.SetStopState();
+
+            if (!isPause)
+            {
+                List<string> unchattedNames = new List<string>(discardedNames);
+                foreach (var target in chatTargets)
+                {
+                    unchattedNames.Add(target.name);
+                }
+
+                uiManager.ShowUnchattedNamesDialog(unchattedNames);
+            }
         }
     }
 }

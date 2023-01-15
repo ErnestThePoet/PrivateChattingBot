@@ -25,7 +25,7 @@ namespace PrivateChattingBot
         private ChatPerformer chatPerformer;
         private UiManager uiManager;
 
-        
+
         public MainWindow()
         {
             InitializeComponent();
@@ -46,9 +46,11 @@ namespace PrivateChattingBot
             uiManager.SetStopState();
         }
 
-        private List<ChatTarget> GetChatTargets(string rawCardNames)
+        private (List<ChatTarget> chatTargets, List<string> discardedNames)
+            GetChatTargets(string rawCardNames)
         {
             List<ChatTarget> chatTargets = new List<ChatTarget>();
+            List<string> discardedNames = new List<string>();
 
             var splited = rawCardNames.Split(
                 new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
@@ -64,10 +66,14 @@ namespace PrivateChattingBot
                     {
                         chatTargets.Add(chatTarget);
                     }
+                    else
+                    {
+                        discardedNames.Add(purifiedLine);
+                    }
                 }
             }
 
-            return chatTargets;
+            return (chatTargets, discardedNames);
         }
 
         private void OnKeyPressed(object sender, KeyPressedArgs e)
@@ -77,15 +83,16 @@ namespace PrivateChattingBot
                 case Key.CapsLock:
                     if (chatPerformer.GetIsStarted())
                     {
-                        chatPerformer.Stop();
+                        chatPerformer.Stop(true);
                     }
                     else
                     {
-                        chatPerformer.SetChatTargets(
-                        GetChatTargets(tbChatTargetList.Text));
+                        (var chatTargets, var discardedNames) = 
+                            GetChatTargets(tbChatTargetList.Text);
+                        chatPerformer.SetChatTargets(chatTargets, discardedNames);
                         chatPerformer.DoChats(tbMessageToSend.Text);
                     }
-                    
+
                     break;
             }
         }
